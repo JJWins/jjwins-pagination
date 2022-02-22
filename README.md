@@ -1,24 +1,91 @@
-# Pagination
+## JJWINS-PAGINATION
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+**Pagination** library for use with angular projects.
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name --project pagination` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project pagination`.
-> Note: Don't forget to add `--project pagination` or else it will be added to the default project in your `angular.json` file. 
+#### Requirements
 
-## Build
+NPM - Node Package Manager
 
-Run `ng build pagination` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Publishing
+#### Installation
 
-After building your library with `ng build pagination`, go to the dist folder `cd dist/pagination` and run `npm publish`.
+`npm install jjwins-pagination`
 
-## Running unit tests
+---
 
-Run `ng test pagination` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Importing
 
-## Further help
+Import **PaginationModule** from **pagination** in your module.ts file and add **PaginationModule** to the import array of module.ts file
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+import { PaginationModule } from 'pagination'
+
+
+imports: [
+  ...
+  PaginationModule
+  ...
+]
+```
+
+---
+
+#### Usage
+
+To render the pagination in your application add _<jjwins-pagination></jjwins-pagination>_ pto your component.html file
+
+_<jjwins-pagination></jjwins-pagination>_ will take 2 input data **_[data] & [displayData]_**
+
+> file.component.html
+> `<jjwins-pagination [data]="data" [displayData]="displayData"></jjwins-pagination> `
+
+In your component.ts file add properties **_data_** and **_displayData_**
+**Important!**
+
+- **_data_** takes an array as value
+- **_displayData_** takes an object with key:value **_{totalDataCount: number, itemsPerPage: number}_**
+  - _totalDataCount_ refers to the total number of data present in the array
+  - _itemsPerPage_ refers to the number of data to be displayed on one page
+    > Note: Provide these values in the component.ts file
+
+##### IMPORTANT - To get the trimmed data according to the number of data per page
+
+Import **_PaginationService_** from **_pagination_** and inject in the constructor.
+Then subscribe to the **_latestdata_** of the pagination service after a timeout of 300 millisecond to receive the latest data.
+
+> Note: The timeout is required to avoid data changes after rendering the virtual DOM
+
+**- Then use the latest data received from the pagination service to render the table in the template**
+
+```
+import { PaginationService } from 'pagination'
+
+ ...
+
+ latestData: any;
+
+ constructor( private _pagination: PaginationService) { }
+
+ ngOnInit() {
+
+  setTimeOut(() => {
+   this._pagination.latestData.subscribe((data) => {
+     this.latestData = data;
+   })
+  }, 300)
+
+ }
+
+ ...
+
+```
+
+##### Alignment options
+
+- To align the pagination use html _'align'_ attribute
+  > `<jjwins-pagination [data]="data" [displayData]="displayData" align="center"></jjwins-pagination> `
+  - By default the pagination is left aligned
+  - It can be center or right aligned with values _'center'_ or _'right'_ in the align attribute
