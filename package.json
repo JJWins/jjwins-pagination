@@ -1,7 +1,22 @@
 {
   "name": "jjwins-pagination",
   "version": "1.0.0",
-  "peerDependencies": {
+  "description": "Pagination library for angular projects",
+  "peerDependencies": {},
+  "keywords": [
+    "pagination",
+    "angular pagination",
+    "bootstrap pagination",
+    "custom style pagination",
+    "ng pagination",
+    "ng-pagination",
+    "jjwins-pagination"
+  ],
+  "author": "John Winsley <johnjvgm@gmail.com> (https://github.com/JJWins)",
+  "license": "MIT",
+  "homepage": "https://github.com/JJWins/jjwins-pagination",
+  "bugs": {
+    "url": "https://github.com/JJWins/jjwins-pagination/issues"
   },
   "dependencies": {
     "tslib": "^2.3.0"
