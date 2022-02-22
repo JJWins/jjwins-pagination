@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { PaginationService } from './pagination.service';
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { PaginationService } from "./pagination.service";
 
 @Component({
-  selector: 'jjwins-pagination',
+  selector: "jjwins-pagination",
   template: `
     <div class="pagination">
       <div>
@@ -43,12 +43,10 @@ import { PaginationService } from './pagination.service';
         display: block;
       }
       .pagination a {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         font-size: 14px !important;
         color: #105591;
         padding: 9px 13px;
-        /* margin-left: -1px; */
-        /* border: 0.5px solid #dddddd; */
         text-decoration: none;
         font-size: 12px;
         background-color: white;
